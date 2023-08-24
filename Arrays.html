@@ -8,30 +8,31 @@
 
 // Ex1
 
-let daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-console.log(daysOfWeek);
+let weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+let originArr = [...weekDays];
 
-daysOfWeek.sort();
-console.log(daysOfWeek);
+console.log("Original array:", weekDays);
+
+weekDays.sort();
+console.log("Sorted array:", weekDays);
 
 
 function printArray(arr) {
     console.log(arr);
 }
 
+printArray(weekDays);
+
 function sortArray(arr) {
     arr.sort();
     return arr;
 }
 
-printArray(daysOfWeek);
-
-let sortedDays = sortArray([...daysOfWeek]); 
-printArray(sortedDays);
+console.log(sortArray(originArr));
 
 // Ex2 
 
-function printValueAtIndex(arr, index) {
+function valueIndex(arr, index) {
     const message = (index >= 0 && index < arr.length)
         ? "Value at index " + index + ": " + arr[index]
         : "Sorry, no value in the array for index number: " + index;
@@ -41,32 +42,39 @@ function printValueAtIndex(arr, index) {
 
 let integerArray = [10, 20, 30, 40, 50];
 
-printValueAtIndex(integerArray, 2);  // Outputs: Value at index 2: 30
-printValueAtIndex(integerArray, 5);  // Outputs: Sorry, no value in the array for index number: 5
+valueIndex(integerArray, 2);  
+valueIndex(integerArray, 5);  
 
 // Ex3
 
-function checkIfAllOdds(arr) {
+function checkOdds(arr) {
     const result = arr.every(value => value % 2 !== 0) ? "odds" : "not odds";
     return result;
 }
 
-let integerArray1 = [3, 7, 11, 15];
-let integerArray2 = [3, 7, 10, 15];
+let intOne = [3, 7, 11, 15];
+let intTwo = [3, 7, 10, 15];
 
-console.log(checkIfAllOdds(integerArray1)); // Outputs: odds
-console.log(checkIfAllOdds(integerArray2)); // Outputs: not odds
+console.log(checkOdds(intOne)); 
+console.log(checkOdds(intTwo)); 
 
 // Ex4
 
 function modifyArray(arr) {
-    const modifiedArray = arr.map((value, index) => (index < 10) ? value + 5 : value);
-    console.log(modifiedArray);
+    const modifiedArray = arr.map(value => (value < 10) ? value + 5 : value);
+    return modifiedArray;
 }
 
-let intArray = [3, 7, 11, 15, 8, 5, 20, 4, 9, 2, 6, 1];
+let modArr = [23, 14, 17, 32, 9, 12, 28, 6, 19, 27, 8, 4];
 
-modifyArray(integerArray);
+const originalArray = [...modArr]; 
+const modified = modifyArray(modArr);
+
+for (let i = 0; i < modArr.length; i++) {
+    console.log(`Original: ${originalArray[i]}, Modified: ${modified[i]}`);
+}
+
+
 
 
 // Ex5
@@ -75,12 +83,12 @@ function findNumber(arr, number) {
     return arr.includes(number) ? "found" : "not found";
 }
 
-let intArr = [3, 7, 11, 15, 8, 5, 20, 4, 9, 2, 6, 1];
-let searchNumber1 = 8;
-let searchNumber2 = 10;
+let findArr = [10, 22, 16, 33, 18, 7, 25, 13, 30, 3, 21, 29];
+let searchNum1 = 18;
+let searchNum2 = 8;
 
-console.log(findNumber(integerArray, searchNumber1)); // Outputs: found
-console.log(findNumber(integerArray, searchNumber2)); // Outputs: not found
+console.log(findNumber(findArr, searchNum1)); 
+console.log(findNumber(findArr, searchNum2)); 
 
 // Ex6
 
@@ -88,11 +96,11 @@ function checkValues(array, firstValue, lastValue) {
     return array[0] === firstValue && array[array.length - 1] === lastValue;
 }
 
-let intsArr = [3, 7, 11, 15, 8, 5, 20, 4, 9, 2, 6, 1];
-let firstParam = 3;
-let secondParam = 1;
+let intsArr = [31, 13, 24, 8, 19, 27, 5, 10, 2, 15, 6, 11];
 
-console.log(checkValues(integerArray, firstParam, secondParam)); // Outputs: true
+
+console.log(checkValues(intsArr, 31, 11)); 
+console.log(checkValues(intsArr, 21, 11)); 
 
 
 // Ex7
@@ -113,6 +121,10 @@ function checkValueRange(array) {
                     ? "greater than 200"
                     : "No condition is happening";
 }
+
+const test = [52, 60, 97, 68, 100];
+console.log(checkValueRange(test));
+
 
     </script>
 </body>
